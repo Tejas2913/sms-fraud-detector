@@ -156,39 +156,55 @@ A saved contact is a contextual signal, not proof that a message is legitimate.
 
 ## Score Fusion and Decision Control
 
-### Fusion Equation
+### Score Fusion
 
-The implemented fusion equation is:
+The system combines the outputs of the Content ML, URL Intelligence, and Sender Context engines with a bounded adjustment from the Rule Intelligence engine.
 
-$$
-\begin{aligned}
-r_{\mathrm{final}} = \operatorname{clip}\big(&0.30s_{\mathrm{ML}}\\
-&+0.30r_{\mathrm{URL}}\\
-&+0.40r_{\mathrm{sender}}\\
-&+\Delta_{\mathrm{rule}},\,0,\,1\big)
-\end{aligned}
-$$
+The final risk score is calculated as:
+
+```text
+risk_final = clip(
+    0.30 * ml_score
+  + 0.30 * url_risk
+  + 0.40 * sender_risk
+  + rule_delta,
+  0.0,
+  1.0
+)
+```
 
 The rule adjustment is:
 
-$$
-\Delta_{\mathrm{rule}} =
-\operatorname{clip}\left(
-(s_{\mathrm{rule}}-0.5)\times0.20,\,
--0.15,\,
-+0.15
-\right)
-$$
+```text
+rule_delta = clip(
+    (rule_score - 0.5) * 0.20,
+    -0.15,
+    +0.15
+)
+```
 
-Where:
+Here, `clip(value, min, max)` restricts a value to the specified range.
 
-- \(s_{\mathrm{ML}}\) is the neural model's fraud score.
-- \(r_{\mathrm{URL}}\) is the URL-related risk.
-- \(r_{\mathrm{sender}}\) is the sender-context risk.
-- \(s_{\mathrm{rule}}\) is the rule-engine score.
-- \(\Delta_{\mathrm{rule}}\) is a bounded adjustment rather than a fourth weighted vote.
+- `ml_score`: Fraud probability produced by DistilBERT.
+- `url_risk`: Risk derived from URL-related signals.
+- `sender_risk`: Risk derived from sender context.
+- `rule_score`: Score produced by the Rule Intelligence engine.
+- `rule_delta`: Bounded adjustment contributed by the rule engine.
 
-The final risk score is clipped to the interval from 0 to 1.
+The weighted components use weights of 0.30, 0.30, and 0.40, respectively. The rule adjustment is separate from these weights and is limited to the range -0.15 to +0.15. The final risk score is restricted to the range 0 to 1.
+
+### Decision Controller
+
+The decision controller converts the available risk and context signals into one of four outcomes:
+
+| Decision | Meaning |
+|---|---|
+| `PASS` | Normal message handling is permitted; this does not guarantee that the message is safe. |
+| `PASS-WATCH` | The message receives a lower-risk outcome with additional caution. |
+| `ESCALATE` | The message requires further attention or a warning. |
+| `BLOCK` | The message is handled according to the application's blocking or quarantine policy. |
+
+The controller uses risk boundaries of 0.25 and 0.65, alongside confidence checks and fixed-priority rules. Consequently, the final decision is not determined by the risk score alone: explicit rule actions, sender context, URL presence, and confidence gating can also affect the outcome.
 
 ### Decision States
 
