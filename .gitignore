@@ -57,7 +57,20 @@ __pycache__/
 *$py.class
 .pytest_cache/
 
-# Temporary / Scratch private captures and debug dumps
-scratch/live_sms_raw_logcat.txt
+# ==========================================
+# Local Research, Experimental & Scratch Data
+# (Preserved locally; excluded from App Repo)
+# ==========================================
+*.ipynb
+*.docx
+scratch/
+parity/
+models/
+hybrid_test_predictions.csv
+deployment_package/*.onnx
+deployment_package/fusion_config.json
+ANDROID_CURRENT_STATE_AND_DEPLOYMENT_READINESS.md
+docs/*.docx
+docs/*Roadmap*.md
 extract_nb05.py
 nb05_cells.txt

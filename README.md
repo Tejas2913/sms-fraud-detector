@@ -1,116 +1,117 @@
-# SMS Guard: Hybrid Neuro-Symbolic On-Device SMS Fraud Detection
+# SMS Guard: On-Device SMS Fraud & Phishing Detection for Android
 
 [![Android Min SDK](https://img.shields.io/badge/Min%20SDK-26%20(Android%208.0)-blue.svg)](https://developer.android.com/about/dashboards)
 [![Android Target SDK](https://img.shields.io/badge/Target%20SDK-34%20(Android%2014)-green.svg)](https://developer.android.com/about/versions/14)
 [![Language](https://img.shields.io/badge/Kotlin-2.0-purple.svg)](https://kotlinlang.org)
-[![Runtime](https://img.shields.io/badge/ONNX%20Runtime-Android-blueviolet.svg)](https://onnxruntime.ai/)
+[![Runtime](https://img.shields.io/badge/ONNX%20Runtime-Android%201.17-blueviolet.svg)](https://onnxruntime.ai/)
 [![UI](https://img.shields.io/badge/Jetpack%20Compose-Material%203-brightgreen.svg)](https://developer.android.com/jetpack/compose)
 [![Architecture](https://img.shields.io/badge/Architecture-Clean%20%2B%20MVI%2FMVVM-orange.svg)]()
 
-**SMS Guard** is an advanced, privacy-first, on-device SMS fraud and smishing detection system designed for Android. Combining deterministic symbolic pattern matching with deep transformer-based language representations (DistilBERT via Microsoft ONNX Runtime), URL threat intelligence, and local sender context, SMS Guard detects complex financial phishing, OTP theft, and social engineering attacks in real time without sending message content or telemetry off the device.
+**SMS Guard** is a native Android application providing real-time, privacy-preserving SMS fraud and phishing (smishing) defense. Designed to execute entirely on-device with **zero external telemetry**, SMS Guard employs a hybrid neuro-symbolic pipeline that combines deterministic pattern-matching rules, a fine-tuned DistilBERT transformer running via Microsoft ONNX Runtime, local URL risk heuristics, and Android Contacts context.
 
 ---
 
 ## 1. System Architecture
 
-The core of SMS Guard is a **Hybrid Neuro-Symbolic** cascading pipeline designed to balance sub-millisecond execution for clear-cut cases with transformer-level deep linguistic analysis for sophisticated scams.
+The detection engine operates as a multi-stage cascading pipeline designed to balance fast execution with deep linguistic understanding.
 
 ```
-Incoming SMS
-    │
-    ▼
-┌──────────────────────────────────────────────┐
-│             Text Preprocessor                │
-│  - Unicode NFKC normalization                │
-│  - Whitespace collapsing                     │
-│  - Canonical masking: <URL>, <PHONE>, <OTP>  │
-└──────────────────────┬───────────────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────┐
-│        Rule Intelligence Engine              │
-│  - 8 Deterministic Regex Pattern Families    │
-│  - Urgency, Credential Harvesting, Financial │
-│  - Impersonation, Delivery Scams, etc.       │
-└──────────────────────┬───────────────────────┘
-                       │
-       ┌───────────────┼───────────────┐
-       ▼               ▼               ▼
-┌──────────────┐┌──────────────┐┌──────────────┐
-│  Content ML  ││     URL      ││Sender Context│
-│    Engine    ││ Intelligence ││    Engine    │
-│ (DistilBERT  ││- Bloom filter││- Contacts DB │
-│  ONNX INT8)  ││- TLD risk    ││- Reg. Sender │
-│              ││- Shorteners  ││- History risk│
-└──────┬───────┘└──────┬───────┘└──────┬───────┘
-       └───────────────┼───────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────┐
-│               Score Fusion                   │
-│   Empirically locked weighted linear sum     │
-│   + Bounded Rule Intelligence Delta          │
-└──────────────────────┬───────────────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────┐
-│             Decision Controller              │
-│   - Confidence Gate verification (0.50)      │
-│   - 4-Tier State Cascade                     │
-│   (PASS / PASS-WATCH / ESCALATE / BLOCK)     │
-└──────────────────────┬───────────────────────┘
-                       │
-                       ▼
-┌──────────────────────────────────────────────┐
-│         Notification & Inbox Routing         │
-│   - System Notification & Warning Badge      │
-│   - Explainable breakdown for user audit     │
-└──────────────────────────────────────────────┘
+Incoming SMS Broadcast
+        │
+        ▼
+┌────────────────────────────────────────────────────────┐
+│                  Text Preprocessor                     │
+│  - Unicode NFKC normalization                          │
+│  - Whitespace collapsing                               │
+│  - Canonical token masking: <URL>, <PHONE>, <OTP_CODE> │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│             Rule Intelligence Engine                   │
+│  - 8 Deterministic Regex Pattern Families              │
+│  - Urgency, Credential Harvesting, Financial Scams     │
+│  - Impersonation, Delivery Holds, Account Action       │
+└───────────────────────────┬────────────────────────────┘
+                            │
+            ┌───────────────┼───────────────┐
+            ▼               ▼               ▼
+┌──────────────────┐┌──────────────┐┌──────────────┐
+│    Content ML    ││     URL      ││Sender Context│
+│      Engine      ││ Intelligence ││    Engine    │
+│  DistilBERT ONNX ││- Bloom filter││- Contacts DB │
+│   Dynamic INT8   ││- TLD risk    ││- Reg. Sender │
+│  (or FP32 flavor)││- Shorteners  ││- History risk│
+└──────────┬───────┘└──────┬───────┘└──────┬───────┘
+            └───────────────┼───────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│                    Score Fusion                        │
+│   Empirically locked weighted linear combination       │
+│   + Bounded Rule Intelligence Delta                    │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│                 Decision Controller                    │
+│   - Confidence Gate verification (threshold: 0.50)     │
+│   - 4-Tier State Cascade:                              │
+│     PASS / PASS-WATCH / ESCALATE / BLOCK               │
+└───────────────────────────┬────────────────────────────┘
+                            │
+                            ▼
+┌────────────────────────────────────────────────────────┐
+│            Notification & Storage Routing              │
+│   - System Notification & Warning Badges               │
+│   - Local Room DB persistence (URI pointer model)      │
+│   - Granular Explainability breakdown for user audit   │
+└────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 2. Core Detection Components
+## 2. Detection Engines
 
 ### 2.1. Text Preprocessor
-Normalizes raw SMS payloads before feeding downstream analyzers:
-- Unicode NFKC normalization and control character stripping.
-- Masking of sensitive variable-length entities with canonical tokens (`<URL>`, `<PHONE>`, `<OTP_CODE>`) to ensure the downstream content transformer learns syntactic and urgency patterns rather than overfitting to specific phone numbers or domains.
+Prepares raw SMS messages for downstream analysis:
+- Normalizes text via Unicode NFKC and strips non-printable control characters.
+- Replaces phone numbers, URLs, and numeric OTP sequences with canonical placeholder tokens (`<URL>`, `<PHONE>`, `<OTP_CODE>`). This forces the content ML model to evaluate linguistic structures and urgency phrases rather than overfitting to specific phone numbers or domains.
 
 ### 2.2. Rule Intelligence Engine (Symbolic Layer)
-Applies deterministic pattern recognition against 8 distinct fraud families:
-- **Urgency Phrase**: Explicit time-pressure tactics ("act within 24 hours", "immediate response required").
-- **Financial Keywords**: Unauthorized transaction claims, lotteries, and unexpected windfall promises.
-- **Credential Harvesting**: Requests to verify or update accounts, KYC, PAN, passwords, or PINs.
-- **Authority / Bank Impersonation**: Spoofed bank alerts, government bodies, and tax agencies.
-- **Delivery Scams**: False delivery hold / missed package alerts requiring link clicks.
-- **Account Action**: Requests to unblock or verify suspended user accounts.
+Applies deterministic pattern recognition against 8 distinct fraud patterns:
+- **Urgency Phrase**: Explicit time-pressure cues (e.g., immediate action required, deadlines).
+- **Financial Keywords**: Lottery wins, unexpected windfalls, and fraudulent monetary transactions.
+- **Credential Harvesting**: Requests to verify or update accounts, KYC, passwords, or PINs.
+- **Authority / Bank Impersonation**: Spoofed government, tax authority, or financial institution alerts.
+- **Delivery Scams**: Package hold and missed shipment notices with embedded links.
+- **Account Action**: Requests to unfreeze or reactivate suspended user accounts.
 
 ### 2.3. Content ML Engine (Neural Layer)
 - **Model**: DistilBERT (`distilbert-base-uncased`) fine-tuned for binary SMS fraud detection.
-- **On-Device Inference**: Executed via Microsoft ONNX Runtime Android (`onnxruntime-android`).
-- **Dynamic INT8 Quantization**: Quantized for edge execution, drastically reducing memory footprint while maintaining inference parity with the unquantized FP32 baseline.
+- **Inference Runtime**: Microsoft ONNX Runtime Android (`onnxruntime-android`).
+- **Quantization**: Dynamic INT8 quantized ONNX model for mobile edge inference, reducing memory usage and inference latency while maintaining FP32 parity.
 - **Standalone Model Threshold**: `0.25`.
 
 ### 2.4. URL Intelligence Engine
 Analyzes hyperlinked content embedded within messages:
-- Extracts HTTP/HTTPS domains and IP patterns.
-- High-risk Top-Level Domain (TLD) evaluation.
-- Known URL shortener identification (`bit.ly`, `tinyurl.com`, `is.gd`, etc.).
-- Bloom Filter domain matching for zero-latency local blacklist checks.
+- Extracts HTTP/HTTPS domains and IP hostnames.
+- Evaluates high-risk Top-Level Domains (TLDs).
+- Identifies known URL shortener services (`bit.ly`, `tinyurl.com`, `is.gd`, etc.).
+- Performs domain checks using an on-device Bloom filter.
 
 ### 2.5. Sender Context Engine
-Resolves relationship signals from on-device Android Providers:
-- Android Contacts Provider query (verifying whether sender is an existing saved contact).
-- Standard registered business sender header verification (e.g., alphanumeric headers).
-- Local historical interaction frequency and previous user feedback.
+Integrates local Android device signals:
+- Resolves sender against the Android Contacts Provider. Messages from existing contacts receive a lower sender risk.
+- Identifies registered alphanumeric business sender headers.
+- Tracks local historical interaction counts and previous user feedback.
 
 ---
 
-## 3. Mathematical Score Fusion & Decision Thresholds
+## 3. Score Fusion & Decision Cascade
 
-### Frozen Score Fusion Formula
-The overall fraud risk is computed via an empirically locked fusion equation combining the neural model, URL risk, sender context, and a bounded rule adjustment delta:
+### Score Fusion Formula
+The overall fraud risk score is computed through an empirically locked weighted linear equation:
 
 $$\text{risk\_final} = \text{clip}\left(0.30 \times s_{\text{ml}} + 0.30 \times r_{\text{url}} + 0.40 \times r_{\text{sender}} + \Delta_{\text{rule}}, \; 0.0, \; 1.0\right)$$
 
@@ -118,93 +119,103 @@ Where the symbolic rule delta is calculated as:
 
 $$\Delta_{\text{rule}} = \text{clip}\left((s_{\text{rule}} - 0.50) \times 0.20, \; -0.15, \; +0.15\right)$$
 
-### Decision Controller Operating Thresholds
-The final decision is resolved through a confidence-gated 4-tier decision cascade:
-- **Confidence Gate**: Minimum confidence score of `0.50`. If uncertainty exceeds this limit, the system flags high uncertainty for audit.
+### Decision States & Thresholds
+The final operational verdict is resolved through a confidence-gated 4-tier decision cascade:
+- **Confidence Gate**: Minimum confidence rating of `0.50`. If uncertainty exceeds this limit, the system flags the message for audit.
 - **Decision States**:
-  - `PASS`: $\text{risk\_final} \le 0.25$ — Message is deemed safe; standard inbox routing.
+  - `PASS`: $\text{risk\_final} \le 0.25$ — Benign message; standard delivery.
   - `PASS-WATCH`: $0.25 < \text{risk\_final} \le 0.45$ — Low-risk message with minor indicators; monitored without intrusive warnings.
-  - `ESCALATE`: $0.45 < \text{risk\_final} \le 0.65$ — Medium-risk or suspicious sender; warning badge and explanation provided.
-  - `BLOCK`: $\text{risk\_final} > 0.65$ — High-risk fraud / smishing attempt; notification alert and moved to Fraud Inbox.
+  - `ESCALATE`: $0.45 < \text{risk\_final} \le 0.65$ — Moderate risk or unverified sender; warning badge and explanation provided.
+  - `BLOCK`: $\text{risk\_final} > 0.65$ — High-risk fraud / smishing attempt; quarantined to Fraud Inbox with notification alert.
 
 ---
 
 ## 4. Privacy & Zero-Telemetry Architecture
 
-SMS Guard is engineered from the ground up to respect Android user privacy:
-- **Zero Cloud Egress**: Zero SMS data, message content, tokens, sender numbers, or analysis metrics are transmitted to any remote server.
-- **Content Provider URI Pointer Strategy**: To avoid creating a duplicate insecure storage of personal SMS messages, `MessageRefEntity` in the Room Database stores only metadata and local system URI pointers (`content://sms/...`). The app resolves message bodies on-demand only for user presentation.
-- **Union Schema Local Audit**: The `AuditLogEntity` logs detection decisions, timestamp, latencies, and component scores locally for security audits and user transparency.
+- **No Remote Telemetry**: SMS text, sender numbers, contact names, and detection scores are never transmitted off the device.
+- **URI Pointer Model**: To avoid insecure duplication of personal SMS content in local application storage, the database entity `MessageRefEntity` stores only message metadata and system Content Provider URI references (`content://sms/...`). The application resolves the message text on-demand solely for user display.
+- **Local Audit Log**: An encrypted/sandboxed SQLite Room table (`AuditLogEntity`) tracks detection actions, timestamps, latencies, and component scores for user review and transparency.
 
 ---
 
-## 5. Android Application & User Interface
+## 5. User Interface & Architecture
 
-Built with modern **Jetpack Compose** and **Material Design 3**, following Android Clean Architecture principles with MVVM / MVI patterns and Dagger Hilt dependency injection.
+The application is built using modern **Jetpack Compose** with Material 3, following Android Clean Architecture principles with MVVM/MVI patterns and Dagger Hilt dependency injection.
 
 ### Application Screens
-1. **Onboarding**: Runtime permission requests (`RECEIVE_SMS`, `READ_SMS`, `READ_CONTACTS`, `POST_NOTIFICATIONS`) and privacy disclaimers.
-2. **Dashboard**: System health status, protection toggle, real-time fraud counters, and recent scan history.
-3. **Fraud Inbox**: Filtered list of blocked and escalated fraudulent messages with quick quarantine management.
+1. **Onboarding**: Explains privacy architecture and requests necessary Android runtime permissions.
+2. **Dashboard**: Displays protection status, protection toggle, aggregate scan statistics, and recent activity.
+3. **Fraud Inbox**: Filtered list of quarantined and escalated fraudulent messages with management options.
 4. **Safe Inbox**: Clean repository of verified benign SMS traffic.
-5. **Message Detail & Explainability**: Granular visual breakdown of detection results, displaying individual engine scores (ML score, URL risk, sender reliability, rule triggers) and actionable user guidance.
-6. **Settings**: Background protection configuration, notifications, sensitivity tuning, and data export.
-7. **Audit Log**: Chronological inspection of pipeline actions, timestamps, and confidence ratings.
-8. **Developer Mode**: In-app pipeline inspection, model variant indicators, and benchmark simulation tools.
+5. **Message Detail & Explainability**: Granular visual breakdown of detection results, displaying individual engine scores (ML score, URL risk, sender reliability, rule triggers) and actionable safety advice.
+6. **Settings**: Background protection configuration, sensitivity controls, notification preferences, and audit export.
+7. **Audit Log**: Chronological inspection of pipeline actions, timestamps, and confidence scores.
+8. **Developer Mode**: In-app pipeline diagnostics, model variant verification, and test simulation tools.
 
 ---
 
-## 6. Technology Stack
+## 6. Required Android Permissions
 
-| Domain | Technology / Library |
+| Permission | Purpose |
 |---|---|
-| **Language** | Kotlin 2.0 (JVM 17 Target) |
-| **UI Framework** | Jetpack Compose (BOM 2024.04.01) + Material 3 |
-| **Architecture** | Single-Activity, Navigation Compose, Clean Architecture |
-| **Dependency Injection** | Dagger Hilt 2.51.1 |
-| **Persistence** | Room Database 2.6.1 + KSP |
-| **ML Inference** | Microsoft ONNX Runtime Android (`com.microsoft.onnxruntime:onnxruntime-android:1.17.0`) |
-| **Async & Concurrency** | Kotlinx Coroutines 1.8.0 + StateFlow |
-| **Serialization** | Kotlinx Serialization JSON 1.6.3 |
-| **Testing** | JUnit 4, MockK, AndroidX Test Runner, Compose UI Test |
-| **Build System** | Gradle 8.7, Android Gradle Plugin 8.4.1 |
+| `android.permission.RECEIVE_SMS` | Intercepts incoming SMS broadcasts via `SmsReceiver` for real-time analysis. |
+| `android.permission.READ_SMS` | Reads message threads to populate inboxes and display message detail views. |
+| `android.permission.READ_CONTACTS` | Resolves sender phone numbers against user contacts to reduce false positives for trusted contacts. |
+| `android.permission.POST_NOTIFICATIONS` | Delivers alerts for detected fraud and quarantined messages on Android 13+ (API 33+). |
 
 ---
 
-## 7. Build Variants & Product Flavors
+## 7. Technology Stack
 
-The project defines two product flavors under the `modelVariant` dimension:
+| Component | Library / Framework | Version |
+|---|---|---|
+| **Language** | Kotlin | 2.0.0 |
+| **Java Compatibility** | JDK 17 | 17 |
+| **UI Toolkit** | Jetpack Compose (BOM) | 2024.04.01 |
+| **Material Design** | Material 3 | 1.2.1 |
+| **ML Inference** | Microsoft ONNX Runtime Android | 1.17.0 |
+| **Dependency Injection** | Dagger Hilt | 2.51.1 |
+| **Database** | Room Database | 2.6.1 |
+| **Serialization** | Kotlinx Serialization JSON | 1.6.3 |
+| **Concurrency** | Kotlinx Coroutines | 1.8.0 |
+| **Testing** | JUnit 4, MockK, AndroidX Test | 4.13.2 / 1.13.11 |
+| **Build Tooling** | Gradle & Android Gradle Plugin | 8.7 / 8.4.1 |
 
-| Flavor | Target ABI | Included Model | Typical Use Case |
+---
+
+## 8. Build Variants & Model Flavors
+
+The project uses Gradle product flavors under the `modelVariant` dimension:
+
+| Flavor | Target ABI | Model Asset | Use Case |
 |---|---|---|---|
-| **`device`** | `arm64-v8a` | Dynamic INT8 Quantized (`distilbert_fraud_dynamic_int8.onnx`, ~67 MB) | Production release on real Android smartphones. Minimal APK footprint and fast inference. |
-| **`research`** | `armeabi-v7a`, `arm64-v8a`, `x86`, `x86_64` | Full FP32 Baseline (`distilbert_fraud.onnx`, ~268 MB) | Research benchmarking, parity validation against Python baseline, and emulator ablation studies. |
+| **`device`** (Default) | `arm64-v8a` | Dynamic INT8 Quantized (`distilbert_fraud_dynamic_int8.onnx`, 64.2 MB) | Production release for physical Android smartphones. Minimal APK footprint and fast inference. |
+| **`research`** | `armeabi-v7a`, `arm64-v8a`, `x86`, `x86_64` | Full FP32 Baseline (`distilbert_fraud.onnx`, 255.5 MB) | Parity benchmarking against unquantized transformer baselines across emulators and architectures. |
 
 ---
 
-## 8. Setup and Build Instructions
+## 9. Setup & Build Instructions
 
 ### Prerequisites
 - **Git** with **Git LFS** installed:
   ```bash
   git lfs install
   ```
-- **Android Studio** (Koala / Iguana / Jellyfish or newer).
-- **Java Development Kit (JDK)**: JDK 17.
-- **Android SDK**: API Level 34 (Android 14) with Build Tools installed.
+- **Android Studio** (Koala / Jellyfish / Iguana or newer).
+- **JDK 17**: Ensure `JAVA_HOME` points to a valid JDK 17 installation (or Android Studio's bundled JBR at `Android Studio/jbr`).
+- **Android SDK**: API Level 34 with Build Tools.
 
 ### Cloning the Repository
-Because the repository uses Git LFS to track ONNX models, ensure you clone with Git LFS enabled:
+Because the repository uses Git LFS to track ONNX model binaries, clone with Git LFS enabled:
 ```bash
 git clone https://github.com/Tejas2913/sms-fraud-detector.git
 cd sms-fraud-detector
 git lfs pull
 ```
 
-### Building via Command Line (Gradle)
+### Build Commands
 
-#### 1. Assemble Device Debug APK
-Builds the lightweight on-device flavor using the INT8 quantized model:
+#### Assemble Device Debug APK
 ```bash
 # Windows
 .\gradlew.bat assembleDeviceDebug
@@ -212,10 +223,9 @@ Builds the lightweight on-device flavor using the INT8 quantized model:
 # Linux / macOS
 ./gradlew assembleDeviceDebug
 ```
-Output APK location: `app/build/outputs/apk/device/debug/app-device-debug.apk`
+Output: `app/build/outputs/apk/device/debug/app-device-debug.apk`
 
-#### 2. Assemble Device Release APK
-Builds the optimized, minified release APK with ProGuard/R8:
+#### Assemble Device Release APK (Minified / ProGuard)
 ```bash
 # Windows
 .\gradlew.bat assembleDeviceRelease
@@ -223,16 +233,15 @@ Builds the optimized, minified release APK with ProGuard/R8:
 # Linux / macOS
 ./gradlew assembleDeviceRelease
 ```
-Output APK location: `app/build/outputs/apk/device/release/app-device-release.apk`
+Output: `app/build/outputs/apk/device/release/app-device-release.apk`
 
-#### 3. Assemble Research Flavor
-Builds the research variant containing the FP32 unquantized model:
+#### Assemble Research Flavor APK
 ```bash
 .\gradlew.bat assembleResearchDebug
 ```
 
-#### 4. Run Unit Test Suite
-Executes the comprehensive suite of 235 unit tests covering tokenization, regex rules, URL extraction, score fusion, and decision gating:
+#### Run Unit Test Suite
+Executes the comprehensive suite of 235 unit tests covering tokenization, regex rules, URL parsing, score fusion, and decision gating:
 ```bash
 # Windows
 .\gradlew.bat testDeviceDebugUnitTest
@@ -243,21 +252,20 @@ Executes the comprehensive suite of 235 unit tests covering tokenization, regex 
 
 ---
 
-## 9. Research Parity & Validation
+## 10. Limitations
 
-The repository includes a dedicated `parity/` suite to verify algorithmic parity between the Python research pipeline and the on-device Kotlin/Android implementation across 11,165 test messages:
-- `parity/01_generate_python_reference.py`: Computes the authoritative Python reference outputs for FP32 and INT8 variants.
-- `parity/02_compare_python_android.py`: Performs row-by-row tolerance checking across all 10 cascade steps.
-- `hybrid_test_predictions.csv`: Frozen benchmark dataset containing 11,165 evaluated SMS messages from public research corpora (UCI SMS Spam Collection, SMSPhishCorpus, and synthetic templates).
+- **Language Scope**: The current text preprocessor and WordPiece tokenizer vocabulary are optimized for English-language SMS communications.
+- **SMS Length Boundedness**: Standard SMS messages are bounded at 160 characters (concatenated messages up to typical limits). The tokenizer sequence length is fixed at 128 tokens.
+- **Messaging Scope**: Analyzes SMS messages received via the Android telephony provider (`SMS_RECEIVED`). Over-The-Top (OTT) messaging platforms (e.g., WhatsApp, Telegram, Signal) operate on proprietary encrypted protocols and are out of scope.
 
 ---
 
-## 10. Project Directory Structure
+## 11. Project Directory Structure
 
 ```
 sms-fraud-detector/
 ├── app/
-│   ├── build.gradle.kts                   # App module build configuration & flavors
+│   ├── build.gradle.kts                   # Module build configuration & flavors
 │   ├── proguard-rules.pro                 # R8 / ProGuard optimization rules
 │   └── src/
 │       ├── main/
@@ -265,32 +273,32 @@ sms-fraud-detector/
 │       │   ├── assets/                    # Production assets (INT8 ONNX model, vocab, configs)
 │       │   ├── java/com/smsfraud/detector/
 │       │   │   ├── benchmark/             # On-device latency benchmarking harness
-│       │   │   ├── data/                  # Room database, DAOs, entities, SMS ContentResolver
+│       │   │   ├── data/                  # Room DB, DAOs, entities, SMS ContentResolver
 │       │   │   ├── di/                    # Dagger Hilt dependency injection modules
-│       │   │   ├── domain/                # Engine contracts & data models
+│       │   │   ├── domain/                # Engine contracts & domain models
 │       │   │   ├── engine/                # Core engines (Rules, ML, URL, Sender, Fusion, Decision)
-│       │   │   ├── ml/                    # ONNX Runtime wrapper & WordPiece BertTokenizer
+│       │   │   ├── ml/                    # ONNX Runtime runner & WordPiece BertTokenizer
 │       │   │   ├── preprocessing/         # Text preprocessor & Unicode normalization
 │       │   │   ├── service/               # Background SMS receiver & Notification manager
 │       │   │   ├── ui/                    # Jetpack Compose UI (8 screens, ViewModels, Themes)
-│       │   │   └── util/                  # Background protection, audit exporters, date utilities
+│       │   │   └── util/                  # Background protection, audit exporters, utilities
 │       │   └── res/                       # App resources (values, colors, icons, XML)
 │       ├── research/assets/               # Research assets (FP32 ONNX model)
-│       └── test/                          # Comprehensive JUnit unit test suite
-├── deployment_package/                    # Standalone exported models, tokenizers, and configs
-├── docs/                                  # Specifications, architecture diagrams, user journey
+│       └── test/                          # Unit test suite (235 tests)
+├── deployment_package/tokenizer/          # Tokenizer vocabulary & configs for unit tests
+├── docs/                                  # Architecture and user journey diagrams (.png)
 ├── gradle/                                # Gradle wrapper and libs.versions.toml version catalog
-├── parity/                                # Python vs Android parity validation harness & outputs
-├── 04_Hybrid_Neuro_Symbolic_Architecture.ipynb  # Architecture training & exploration notebook
-├── 05_On_Device_Deployment_And_Optimization_v2.ipynb # Quantization & deployment notebook
+├── .gitattributes                         # Git LFS tracking rules for ONNX models
+├── .gitignore                             # Android Studio, Gradle, and local file exclusions
 ├── build.gradle.kts                       # Root project build configuration
 ├── gradle.properties                      # JVM args and AndroidX configuration
 ├── gradlew.bat                            # Windows Gradle wrapper script
+├── README.md                              # Application documentation
 └── settings.gradle.kts                    # Project repositories & module settings
 ```
 
 ---
 
-## 11. License & Academic Attribution
+## 12. License
 
-This project was developed as part of an MSc research dissertation on **Hybrid Neuro-Symbolic On-Device SMS Fraud Detection**. All implementations of detection rules, fusion logic, and neural cascades are provided for academic and cybersecurity research purposes.
+This project is licensed under the Apache License 2.0. See the LICENSE file for details.
