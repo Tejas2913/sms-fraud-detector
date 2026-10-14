@@ -160,27 +160,25 @@ A saved contact is a contextual signal, not proof that a message is legitimate.
 
 The implemented fusion equation is:
 
-\[
+$$
 \begin{aligned}
-r_{\mathrm{final}} = \operatorname{clip}(&0.30s_{\mathrm{ML}}\\
+r_{\mathrm{final}} = \operatorname{clip}\big(&0.30s_{\mathrm{ML}}\\
 &+0.30r_{\mathrm{URL}}\\
 &+0.40r_{\mathrm{sender}}\\
-&+\Delta_{\mathrm{rule}},\,0,\,1)
+&+\Delta_{\mathrm{rule}},\,0,\,1\big)
 \end{aligned}
-\]
+$$
 
 The rule adjustment is:
 
-\[
-\Delta_{\mathrm{rule}}
-=
-\operatorname{clip}
-\left(
-(s_{\mathrm{rule}}-0.5)\times0.20,
--0.15,
+$$
+\Delta_{\mathrm{rule}} =
+\operatorname{clip}\left(
+(s_{\mathrm{rule}}-0.5)\times0.20,\,
+-0.15,\,
 +0.15
 \right)
-\]
+$$
 
 Where:
 
