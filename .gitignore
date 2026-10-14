@@ -1,0 +1,63 @@
+# ==========================================
+# Android Studio, Gradle, and Build Outputs
+# ==========================================
+*.iml
+.gradle/
+build/
+*/build/
+/build
+/app/build
+/app/schemas
+/captures
+.externalNativeBuild
+.cxx
+.kotlin/
+.navigation/
+
+# Android Studio and JetBrains IDE files
+.idea/
+*.iws
+*.ipr
+out/
+
+# Local configuration & environment
+local.properties
+/local.properties
+secrets.properties
+
+# Signing files & Keystores (Security)
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+
+# Application Binaries & Packages
+*.apk
+*.ap_
+*.aab
+*.dex
+release_archive/
+
+# Logs and Crash Reports
+*.log
+hs_err_pid*.log
+replay_pid*.log
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# Python runtime & caches
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Temporary / Scratch private captures and debug dumps
+scratch/live_sms_raw_logcat.txt
+extract_nb05.py
+nb05_cells.txt

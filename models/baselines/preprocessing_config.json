@@ -1,0 +1,25 @@
+{
+  "function_name": "preprocess_for_classical",
+  "substitution_rules": [
+    {
+      "name": "URL",
+      "replacement": "[URL]",
+      "pattern": "https?://\\S+|www\\.\\S+|\\b\\S+\\.(?:xyz|top|tk|ml|ga|click|info|ly|gl)(?:/\\S*)?"
+    },
+    {
+      "name": "PHONE",
+      "replacement": "[PHONE]",
+      "pattern": "(?:\\+?\\d[\\d\\-\\s]{7,}\\d)"
+    },
+    {
+      "name": "AMOUNT",
+      "replacement": "[AMOUNT]",
+      "pattern": "(?:rs\\.?|inr|\u20b9|\\$|\u00a3|\u20ac)\\s*[\\d,]+(?:\\.\\d{1,2})?|[\\d,]+(?:\\.\\d{1,2})?\\s*(?:rs\\.?|inr|rupees?)"
+    }
+  ],
+  "other_steps": [
+    "lowercase",
+    "whitespace_normalisation"
+  ],
+  "source_code": "def preprocess_for_classical(text: str) -> str:\n    '''Lightweight deterministic preprocessing for TF-IDF classical models.\n\n    Substitutions applied in order:\n      1. Lowercase    -> uniform case for vocabulary matching\n      2. URLs         -> [URL]    (removes domain-specific features the on-device\n                                   URL Intelligence Engine handles separately)\n      3. Phone numbers -> [PHONE] (PII scrubbing + reduces OOV token diversity)\n      4. Amounts      -> [AMOUNT] (normalises monetary figures across fraud types)\n      5. Whitespace   -> single spaces, stripped\n\n    Lowercase is applied first so that substitution tokens ([URL], [PHONE],\n    [AMOUNT]) are inserted into already-lowercased text and remain in their\n    canonical uppercase form \u2014 distinguishable from ordinary vocabulary tokens.\n    The original message is never overwritten \u2014 callers receive a new string.\n    '''\n    text = text.lower()\n    text = _RE_URL.sub(\"[URL]\", text)\n    text = _RE_PHONE.sub(\"[PHONE]\", text)\n    text = _RE_AMOUNT.sub(\"[AMOUNT]\", text)\n    text = _RE_WS.sub(\" \", text).strip()\n    return text\n"
+}

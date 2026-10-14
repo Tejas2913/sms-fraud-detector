@@ -1,0 +1,280 @@
+{
+  "variant": "fp32",
+  "total_rows": 11165,
+  "steps": {
+    "step1_preprocessing": {
+      "match_count": 2677,
+      "mismatch_count": 8488,
+      "agreement_pct": 23.976712942230183,
+      "sample_mismatches": [
+        {
+          "row_id": "uci_sms_spam_429",
+          "py": "I wnt to buy a BMW car urgently..its vry urgent.but hv a shortage of &lt;#&gt; Lacs.there is no source to arng dis amt. &lt;#&gt; lacs..thats my prob",
+          "an": "i wnt to buy a bmw car urgently..its vry urgent.but hv a shortage of &lt;#&gt; lacs.there is no source to arng dis amt. &lt;#&gt; lacs..thats my prob"
+        },
+        {
+          "row_id": "smishing_dataset_1038",
+          "py": "What time. I\u00e2\u0080\u0098m out until prob 3 or so",
+          "an": "what time. i\u00e2\u0080\u0098m out until prob 3 or so"
+        },
+        {
+          "row_id": "github_fraud_compilation_59095",
+          "py": "Akka for me itself tshirt is very loose",
+          "an": "akka for me itself tshirt is very loose"
+        },
+        {
+          "row_id": "github_fraud_compilation_52521",
+          "py": "Hmmm... Muz glue to e cardboard at e back lor...",
+          "an": "hmmm... muz glue to e cardboard at e back lor..."
+        },
+        {
+          "row_id": "github_fraud_compilation_35005",
+          "py": "Customer Your State Bank of india Account Will be Suspended Please Re KYC Verification Update Click here link[URL] sbibank Thank your4",
+          "an": "customer your state bank of india account will be suspended please re kyc verification update click here link[url] sbibank thank your4"
+        }
+      ]
+    },
+    "step3_rule_action": {
+      "match_count": 11165,
+      "mismatch_count": 0,
+      "agreement_pct": 100.0,
+      "sample_mismatches": []
+    },
+    "step3_rule_label": {
+      "match_count": 11165,
+      "mismatch_count": 0,
+      "agreement_pct": 100.0,
+      "sample_mismatches": []
+    },
+    "step3_rule_confidence": {
+      "mae": 0.0,
+      "max_abs_diff": 0.0,
+      "near_exact_count": 11165,
+      "near_exact_pct": 100.0
+    },
+    "step3_rule_score": {
+      "mae": 0.0,
+      "max_abs_diff": 0.0,
+      "near_exact_count": 11165,
+      "near_exact_pct": 100.0
+    },
+    "step4_url_present": {
+      "match_count": 11165,
+      "mismatch_count": 0,
+      "agreement_pct": 100.0,
+      "sample_mismatches": []
+    },
+    "step4_url_label": {
+      "match_count": 11165,
+      "mismatch_count": 0,
+      "agreement_pct": 100.0,
+      "sample_mismatches": []
+    },
+    "step4_url_risk": {
+      "mae": 0.0,
+      "max_abs_diff": 0.0,
+      "near_exact_count": 11165,
+      "near_exact_pct": 100.0
+    },
+    "step4_url_confidence": {
+      "mae": 0.0,
+      "max_abs_diff": 0.0,
+      "near_exact_count": 11165,
+      "near_exact_pct": 100.0
+    },
+    "step5_sender_label": {
+      "match_count": 10922,
+      "mismatch_count": 243,
+      "agreement_pct": 97.82355575459025,
+      "sample_mismatches": [
+        {
+          "row_id": "synthetic_otp_47",
+          "py": "unknown_sender",
+          "an": "unregistered_sender"
+        },
+        {
+          "row_id": "github_fraud_compilation_39045",
+          "py": "registered_business_sender",
+          "an": "unregistered_sender"
+        },
+        {
+          "row_id": "synthetic_otp_11",
+          "py": "unknown_sender",
+          "an": "unregistered_sender"
+        },
+        {
+          "row_id": "github_fraud_compilation_63319",
+          "py": "registered_business_sender",
+          "an": "unregistered_sender"
+        },
+        {
+          "row_id": "synthetic_otp_48",
+          "py": "unknown_sender",
+          "an": "unregistered_sender"
+        }
+      ]
+    },
+    "step5_sender_risk": {
+      "mae": 0.00600537393640842,
+      "max_abs_diff": 0.45000000000000007,
+      "near_exact_count": 10922,
+      "near_exact_pct": 97.82355575459025
+    },
+    "step5_sender_confidence": {
+      "mae": 0.004003582624272278,
+      "max_abs_diff": 0.29999999999999993,
+      "near_exact_count": 10922,
+      "near_exact_pct": 97.82355575459025
+    },
+    "step5_trusted_sender": {
+      "match_count": 10963,
+      "mismatch_count": 202,
+      "agreement_pct": 98.19077474249887,
+      "sample_mismatches": [
+        {
+          "row_id": "github_fraud_compilation_39045",
+          "py": "True",
+          "an": "False"
+        },
+        {
+          "row_id": "github_fraud_compilation_63319",
+          "py": "True",
+          "an": "False"
+        },
+        {
+          "row_id": "github_fraud_compilation_44235",
+          "py": "True",
+          "an": "False"
+        },
+        {
+          "row_id": "github_fraud_compilation_24611",
+          "py": "True",
+          "an": "False"
+        },
+        {
+          "row_id": "github_fraud_compilation_27194",
+          "py": "True",
+          "an": "False"
+        }
+      ]
+    },
+    "ml_score": {
+      "mae": 0.0,
+      "max_abs_diff": 0.0,
+      "near_exact_count": 11165,
+      "near_exact_pct": 100.0
+    },
+    "ml_confidence": {
+      "mae": 1.763924287316772e-08,
+      "max_abs_diff": 5.835999994374674e-08,
+      "near_exact_count": 11165,
+      "near_exact_pct": 100.0
+    },
+    "step8_rule_delta": {
+      "mae": 8.813255705168525e-11,
+      "max_abs_diff": 1.9999999989472883e-09,
+      "near_exact_count": 11165,
+      "near_exact_pct": 100.0
+    },
+    "step8_risk_final": {
+      "mae": 0.002402166698436399,
+      "max_abs_diff": 0.17999999199999997,
+      "near_exact_count": 10922,
+      "near_exact_pct": 97.82355575459025
+    },
+    "step9_four_state_decision": {
+      "match_count": 11149,
+      "mismatch_count": 16,
+      "agreement_pct": 99.85669502910882,
+      "sample_mismatches": [
+        {
+          "row_id": "github_fraud_compilation_3685",
+          "py": "PASS",
+          "an": "PASS-WATCH"
+        },
+        {
+          "row_id": "github_fraud_compilation_3684",
+          "py": "PASS",
+          "an": "PASS-WATCH"
+        },
+        {
+          "row_id": "github_fraud_compilation_1874",
+          "py": "PASS",
+          "an": "PASS-WATCH"
+        },
+        {
+          "row_id": "github_fraud_compilation_1045",
+          "py": "PASS",
+          "an": "PASS-WATCH"
+        },
+        {
+          "row_id": "github_fraud_compilation_2549",
+          "py": "PASS",
+          "an": "PASS-WATCH"
+        }
+      ]
+    },
+    "step9_binary_decision": {
+      "agreement_pct": 100.0,
+      "binary_flips": 0
+    },
+    "step9_confusion_matrix": {
+      "BLOCK": {
+        "BLOCK": 196,
+        "ESCALATE": 0,
+        "PASS": 0,
+        "PASS-WATCH": 0
+      },
+      "ESCALATE": {
+        "BLOCK": 0,
+        "ESCALATE": 4224,
+        "PASS": 0,
+        "PASS-WATCH": 0
+      },
+      "PASS": {
+        "BLOCK": 0,
+        "ESCALATE": 0,
+        "PASS": 62,
+        "PASS-WATCH": 0
+      },
+      "PASS-WATCH": {
+        "BLOCK": 0,
+        "ESCALATE": 0,
+        "PASS": 16,
+        "PASS-WATCH": 6667
+      }
+    },
+    "step10_decision_reason": {
+      "match_count": 11147,
+      "mismatch_count": 18,
+      "agreement_pct": 99.83878190774742,
+      "sample_mismatches": [
+        {
+          "row_id": "github_fraud_compilation_3685",
+          "py": "trusted_sender+no_url",
+          "an": "low_risk"
+        },
+        {
+          "row_id": "github_fraud_compilation_3684",
+          "py": "trusted_sender+no_url",
+          "an": "low_risk"
+        },
+        {
+          "row_id": "github_fraud_compilation_1874",
+          "py": "trusted_sender+no_url",
+          "an": "low_risk"
+        },
+        {
+          "row_id": "github_fraud_compilation_1045",
+          "py": "trusted_sender+no_url",
+          "an": "low_risk"
+        },
+        {
+          "row_id": "github_fraud_compilation_2549",
+          "py": "trusted_sender+no_url",
+          "an": "low_risk"
+        }
+      ]
+    }
+  }
+}

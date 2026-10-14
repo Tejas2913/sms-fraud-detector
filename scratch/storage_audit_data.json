@@ -1,0 +1,695 @@
+{
+  "root": "c:\\Users\\hp\\Desktop\\SMS_Fraud",
+  "total_bytes": 5763945005,
+  "total_size_str": "5.37 GB",
+  "total_files": 12051,
+  "total_dirs": 3290,
+  "top_level": [
+    {
+      "name": "app",
+      "size_bytes": 5388824086,
+      "size_str": "5.02 GB",
+      "pct": 93.49194139301126,
+      "file_count": 11880,
+      "type": "Directory"
+    },
+    {
+      "name": "deployment_package",
+      "size_bytes": 336227782,
+      "size_str": "320.65 MB",
+      "pct": 5.8332926790303405,
+      "file_count": 7,
+      "type": "Directory"
+    },
+    {
+      "name": ".gradle",
+      "size_bytes": 16623525,
+      "size_str": "15.85 MB",
+      "pct": 0.28840533671955115,
+      "file_count": 122,
+      "type": "Directory"
+    },
+    {
+      "name": "parity",
+      "size_bytes": 14104275,
+      "size_str": "13.45 MB",
+      "pct": 0.2446982923633915,
+      "file_count": 7,
+      "type": "Directory"
+    },
+    {
+      "name": "hybrid_test_predictions.csv",
+      "size_bytes": 3297153,
+      "size_str": "3.14 MB",
+      "pct": 0.05720306139527436,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "docs",
+      "size_bytes": 2204643,
+      "size_str": "2.10 MB",
+      "pct": 0.038248855568322686,
+      "file_count": 5,
+      "type": "Directory"
+    },
+    {
+      "name": "replay_pid1452.log",
+      "size_bytes": 1044991,
+      "size_str": "1020.50 KB",
+      "pct": 0.01812978782922999,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "04_Hybrid_Neuro_Symbolic_Architecture.ipynb",
+      "size_bytes": 546579,
+      "size_str": "533.77 KB",
+      "pct": 0.009482724063568681,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "05_On_Device_Deployment_And_Optimization_v2.ipynb",
+      "size_bytes": 530646,
+      "size_str": "518.21 KB",
+      "pct": 0.009206298802984502,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "nb05_cells.txt",
+      "size_bytes": 154202,
+      "size_str": "150.59 KB",
+      "pct": 0.002675285761162463,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "scratch",
+      "size_bytes": 88741,
+      "size_str": "86.66 KB",
+      "pct": 0.0015395879024352349,
+      "file_count": 8,
+      "type": "Directory"
+    },
+    {
+      "name": "hs_err_pid1452.log",
+      "size_bytes": 69665,
+      "size_str": "68.03 KB",
+      "pct": 0.001208634016104739,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "hs_err_pid5904.log",
+      "size_bytes": 68753,
+      "size_str": "67.14 KB",
+      "pct": 0.0011928115195471059,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "gradle",
+      "size_bytes": 62803,
+      "size_str": "61.33 KB",
+      "pct": 0.001089583608891494,
+      "file_count": 3,
+      "type": "Directory"
+    },
+    {
+      "name": "SMS_Fraud_Research_Project_Current_Status.docx",
+      "size_bytes": 58596,
+      "size_str": "57.22 KB",
+      "pct": 0.0010165954038279378,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "ANDROID_CURRENT_STATE_AND_DEPLOYMENT_READINESS.md",
+      "size_bytes": 23562,
+      "size_str": "23.01 KB",
+      "pct": 0.0004087825261962228,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": ".kotlin",
+      "size_bytes": 8754,
+      "size_str": "8.55 KB",
+      "pct": 0.0001518751478788615,
+      "file_count": 2,
+      "type": "Directory"
+    },
+    {
+      "name": "gradlew.bat",
+      "size_bytes": 2799,
+      "size_str": "2.73 KB",
+      "pct": 4.856049107984159e-05,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "models",
+      "size_bytes": 1821,
+      "size_str": "1.78 KB",
+      "pct": 3.1592945429221705e-05,
+      "file_count": 1,
+      "type": "Directory"
+    },
+    {
+      "name": "settings.gradle.kts",
+      "size_bytes": 533,
+      "size_str": "533 B",
+      "pct": 9.247138887301025e-06,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "extract_nb05.py",
+      "size_bytes": 454,
+      "size_str": "454 B",
+      "pct": 7.876549821453405e-06,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "build.gradle.kts",
+      "size_bytes": 251,
+      "size_str": "251 B",
+      "pct": 4.354656399085473e-06,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "gradle.properties",
+      "size_bytes": 205,
+      "size_str": "205 B",
+      "pct": 3.5565918797311633e-06,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": ".gitignore",
+      "size_bytes": 133,
+      "size_str": "133 B",
+      "pct": 2.307447414654852e-06,
+      "file_count": 1,
+      "type": "File"
+    },
+    {
+      "name": "local.properties",
+      "size_bytes": 53,
+      "size_str": "53 B",
+      "pct": 9.195091201256178e-07,
+      "file_count": 1,
+      "type": "File"
+    }
+  ],
+  "top_dirs": [
+    {
+      "path": "app",
+      "size_bytes": 5388824086,
+      "size_str": "5.02 GB",
+      "pct": 93.49194139301126,
+      "file_count": 11880
+    },
+    {
+      "path": "app\\build",
+      "size_bytes": 5052160211,
+      "size_str": "4.71 GB",
+      "pct": 87.65108283679747,
+      "file_count": 11754
+    },
+    {
+      "path": "app\\build\\intermediates",
+      "size_bytes": 3505345420,
+      "size_str": "3.26 GB",
+      "pct": 60.81503929963329,
+      "file_count": 7382
+    },
+    {
+      "path": "app\\build\\outputs",
+      "size_bytes": 1485314208,
+      "size_str": "1.38 GB",
+      "pct": 25.769055858644506,
+      "file_count": 29
+    },
+    {
+      "path": "app\\build\\outputs\\apk",
+      "size_bytes": 1430016214,
+      "size_str": "1.33 GB",
+      "pct": 24.809678315103913,
+      "file_count": 14
+    },
+    {
+      "path": "app\\build\\intermediates\\assets",
+      "size_bytes": 1145236743,
+      "size_str": "1.07 GB",
+      "pct": 19.86897414889544,
+      "file_count": 38
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets",
+      "size_bytes": 1142231469,
+      "size_str": "1.06 GB",
+      "pct": 19.81683496301853,
+      "file_count": 38
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\debug",
+      "size_bytes": 419418313,
+      "size_str": "399.99 MB",
+      "pct": 7.276584225494358,
+      "file_count": 2
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\research\\debug",
+      "size_bytes": 419055695,
+      "size_str": "399.64 MB",
+      "pct": 7.270293082888288,
+      "file_count": 2
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\research",
+      "size_bytes": 419055695,
+      "size_str": "399.64 MB",
+      "pct": 7.270293082888288,
+      "file_count": 2
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\release",
+      "size_bytes": 403757184,
+      "size_str": "385.05 MB",
+      "pct": 7.004875717061079,
+      "file_count": 4
+    },
+    {
+      "path": "app\\src",
+      "size_bytes": 336640019,
+      "size_str": "321.04 MB",
+      "pct": 5.840444673014364,
+      "file_count": 122
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\debug\\mergeDebugAssets",
+      "size_bytes": 336229603,
+      "size_str": "320.65 MB",
+      "pct": 5.83332427197577,
+      "file_count": 8
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\debug",
+      "size_bytes": 336229603,
+      "size_str": "320.65 MB",
+      "pct": 5.83332427197577,
+      "file_count": 8
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\release\\mergeReleaseAssets",
+      "size_bytes": 336229603,
+      "size_str": "320.65 MB",
+      "pct": 5.83332427197577,
+      "file_count": 8
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\release",
+      "size_bytes": 336229603,
+      "size_str": "320.65 MB",
+      "pct": 5.83332427197577,
+      "file_count": 8
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\researchDebug\\mergeResearchDebugAssets",
+      "size_bytes": 336229603,
+      "size_str": "320.65 MB",
+      "pct": 5.83332427197577,
+      "file_count": 8
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\researchDebug",
+      "size_bytes": 336229603,
+      "size_str": "320.65 MB",
+      "pct": 5.83332427197577,
+      "file_count": 8
+    },
+    {
+      "path": "deployment_package",
+      "size_bytes": 336227782,
+      "size_str": "320.65 MB",
+      "pct": 5.8332926790303405,
+      "file_count": 7
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\debug\\compressDebugAssets\\out\\assets",
+      "size_bytes": 335644661,
+      "size_str": "320.10 MB",
+      "pct": 5.823175979452289,
+      "file_count": 8
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\debug\\compressDebugAssets\\out",
+      "size_bytes": 335644661,
+      "size_str": "320.10 MB",
+      "pct": 5.823175979452289,
+      "file_count": 8
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\debug\\compressDebugAssets",
+      "size_bytes": 335644661,
+      "size_str": "320.10 MB",
+      "pct": 5.823175979452289,
+      "file_count": 8
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\debug",
+      "size_bytes": 335644661,
+      "size_str": "320.10 MB",
+      "pct": 5.823175979452289,
+      "file_count": 8
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\researchDebug\\compressResearchDebugAssets\\out\\assets",
+      "size_bytes": 335644661,
+      "size_str": "320.10 MB",
+      "pct": 5.823175979452289,
+      "file_count": 8
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\researchDebug\\compressResearchDebugAssets\\out",
+      "size_bytes": 335644661,
+      "size_str": "320.10 MB",
+      "pct": 5.823175979452289,
+      "file_count": 8
+    }
+  ],
+  "top_files": [
+    {
+      "path": "app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "size_bytes": 419417908,
+      "size_str": "399.99 MB",
+      "pct": 7.276577199056742
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\research\\debug\\app-research-debug.apk",
+      "size_bytes": 419055264,
+      "size_str": "399.64 MB",
+      "pct": 7.270285605370727
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\release\\app-release-unsigned.apk",
+      "size_bytes": 403747624,
+      "size_str": "385.04 MB",
+      "pct": 7.004709858434882
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\debug\\compressDebugAssets\\out\\assets\\distilbert_fraud.onnx.jar",
+      "size_bytes": 267955790,
+      "size_str": "255.54 MB",
+      "pct": 4.648826277272922
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\release\\compressReleaseAssets\\out\\assets\\distilbert_fraud.onnx.jar",
+      "size_bytes": 267955790,
+      "size_str": "255.54 MB",
+      "pct": 4.648826277272922
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\researchDebug\\compressResearchDebugAssets\\out\\assets\\distilbert_fraud.onnx.jar",
+      "size_bytes": 267955790,
+      "size_str": "255.54 MB",
+      "pct": 4.648826277272922
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\debug\\mergeDebugAssets\\distilbert_fraud.onnx",
+      "size_bytes": 267955636,
+      "size_str": "255.54 MB",
+      "pct": 4.648823605491705
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\release\\mergeReleaseAssets\\distilbert_fraud.onnx",
+      "size_bytes": 267955636,
+      "size_str": "255.54 MB",
+      "pct": 4.648823605491705
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\researchDebug\\mergeResearchDebugAssets\\distilbert_fraud.onnx",
+      "size_bytes": 267955636,
+      "size_str": "255.54 MB",
+      "pct": 4.648823605491705
+    },
+    {
+      "path": "app\\src\\research\\assets\\distilbert_fraud.onnx",
+      "size_bytes": 267955636,
+      "size_str": "255.54 MB",
+      "pct": 4.648823605491705
+    },
+    {
+      "path": "deployment_package\\distilbert_fraud.onnx",
+      "size_bytes": 267955636,
+      "size_str": "255.54 MB",
+      "pct": 4.648823605491705
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\device\\debug\\app-device-debug.apk",
+      "size_bytes": 101537176,
+      "size_str": "96.83 MB",
+      "pct": 1.761591686109434
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\device\\release\\app-device-release.apk",
+      "size_bytes": 86237732,
+      "size_str": "82.24 MB",
+      "pct": 1.4961581334518648
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\debug\\compressDebugAssets\\out\\assets\\distilbert_fraud_dynamic_int8.onnx.jar",
+      "size_bytes": 67327789,
+      "size_str": "64.21 MB",
+      "pct": 1.1680852079885518
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\deviceDebug\\compressDeviceDebugAssets\\out\\assets\\distilbert_fraud_dynamic_int8.onnx.jar",
+      "size_bytes": 67327789,
+      "size_str": "64.21 MB",
+      "pct": 1.1680852079885518
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\deviceRelease\\compressDeviceReleaseAssets\\out\\assets\\distilbert_fraud_dynamic_int8.onnx.jar",
+      "size_bytes": 67327789,
+      "size_str": "64.21 MB",
+      "pct": 1.1680852079885518
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\release\\compressReleaseAssets\\out\\assets\\distilbert_fraud_dynamic_int8.onnx.jar",
+      "size_bytes": 67327789,
+      "size_str": "64.21 MB",
+      "pct": 1.1680852079885518
+    },
+    {
+      "path": "app\\build\\intermediates\\compressed_assets\\researchDebug\\compressResearchDebugAssets\\out\\assets\\distilbert_fraud_dynamic_int8.onnx.jar",
+      "size_bytes": 67327789,
+      "size_str": "64.21 MB",
+      "pct": 1.1680852079885518
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\debug\\mergeDebugAssets\\distilbert_fraud_dynamic_int8.onnx",
+      "size_bytes": 67327609,
+      "size_str": "64.21 MB",
+      "pct": 1.1680820851273892
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\deviceDebug\\mergeDeviceDebugAssets\\distilbert_fraud_dynamic_int8.onnx",
+      "size_bytes": 67327609,
+      "size_str": "64.21 MB",
+      "pct": 1.1680820851273892
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\deviceRelease\\mergeDeviceReleaseAssets\\distilbert_fraud_dynamic_int8.onnx",
+      "size_bytes": 67327609,
+      "size_str": "64.21 MB",
+      "pct": 1.1680820851273892
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\release\\mergeReleaseAssets\\distilbert_fraud_dynamic_int8.onnx",
+      "size_bytes": 67327609,
+      "size_str": "64.21 MB",
+      "pct": 1.1680820851273892
+    },
+    {
+      "path": "app\\build\\intermediates\\assets\\researchDebug\\mergeResearchDebugAssets\\distilbert_fraud_dynamic_int8.onnx",
+      "size_bytes": 67327609,
+      "size_str": "64.21 MB",
+      "pct": 1.1680820851273892
+    },
+    {
+      "path": "app\\src\\main\\assets\\distilbert_fraud_dynamic_int8.onnx",
+      "size_bytes": 67327609,
+      "size_str": "64.21 MB",
+      "pct": 1.1680820851273892
+    },
+    {
+      "path": "deployment_package\\distilbert_fraud_dynamic_int8.onnx",
+      "size_bytes": 67327609,
+      "size_str": "64.21 MB",
+      "pct": 1.1680820851273892
+    },
+    {
+      "path": "app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex",
+      "size_bytes": 44393820,
+      "size_str": "42.34 MB",
+      "pct": 0.7701985352304728
+    },
+    {
+      "path": "app\\build\\intermediates\\dex\\deviceDebug\\mergeExtDexDeviceDebug\\classes.dex",
+      "size_bytes": 44393820,
+      "size_str": "42.34 MB",
+      "pct": 0.7701985352304728
+    },
+    {
+      "path": "app\\build\\intermediates\\dex\\researchDebug\\mergeExtDexResearchDebug\\classes.dex",
+      "size_bytes": 44393820,
+      "size_str": "42.34 MB",
+      "pct": 0.7701985352304728
+    },
+    {
+      "path": "app\\build\\intermediates\\incremental\\debug-mergeJavaRes\\zip-cache\\qPDTnpamcrQ+MkoS5D5K91IjfRs=",
+      "size_bytes": 37425981,
+      "size_str": "35.69 MB",
+      "pct": 0.6493119030027942
+    },
+    {
+      "path": "app\\build\\intermediates\\incremental\\deviceDebug-mergeJavaRes\\zip-cache\\qPDTnpamcrQ+MkoS5D5K91IjfRs=",
+      "size_bytes": 37425981,
+      "size_str": "35.69 MB",
+      "pct": 0.6493119030027942
+    },
+    {
+      "path": "app\\build\\intermediates\\incremental\\deviceRelease-mergeJavaRes\\zip-cache\\qPDTnpamcrQ+MkoS5D5K91IjfRs=",
+      "size_bytes": 37425981,
+      "size_str": "35.69 MB",
+      "pct": 0.6493119030027942
+    },
+    {
+      "path": "app\\build\\intermediates\\incremental\\release-mergeJavaRes\\zip-cache\\qPDTnpamcrQ+MkoS5D5K91IjfRs=",
+      "size_bytes": 37425981,
+      "size_str": "35.69 MB",
+      "pct": 0.6493119030027942
+    },
+    {
+      "path": "app\\build\\intermediates\\incremental\\researchDebug-mergeJavaRes\\zip-cache\\qPDTnpamcrQ+MkoS5D5K91IjfRs=",
+      "size_bytes": 37425981,
+      "size_str": "35.69 MB",
+      "pct": 0.6493119030027942
+    },
+    {
+      "path": "app\\build\\outputs\\mapping\\release\\mapping.txt",
+      "size_bytes": 23480975,
+      "size_str": "22.39 MB",
+      "pct": 0.40737680494229495
+    },
+    {
+      "path": "app\\build\\outputs\\mapping\\deviceRelease\\mapping.txt",
+      "size_bytes": 23476055,
+      "size_str": "22.39 MB",
+      "pct": 0.4072914467371814
+    }
+  ],
+  "thresholds": {
+    ">250MB": [
+      "app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "app\\build\\outputs\\apk\\research\\debug\\app-research-debug.apk",
+      "app\\build\\outputs\\apk\\release\\app-release-unsigned.apk",
+      "app\\build\\intermediates\\compressed_assets\\debug\\compressDebugAssets\\out\\assets\\distilbert_fraud.onnx.jar",
+      "app\\build\\intermediates\\compressed_assets\\release\\compressReleaseAssets\\out\\assets\\distilbert_fraud.onnx.jar",
+      "app\\build\\intermediates\\compressed_assets\\researchDebug\\compressResearchDebugAssets\\out\\assets\\distilbert_fraud.onnx.jar",
+      "app\\build\\intermediates\\assets\\debug\\mergeDebugAssets\\distilbert_fraud.onnx",
+      "app\\build\\intermediates\\assets\\release\\mergeReleaseAssets\\distilbert_fraud.onnx",
+      "app\\build\\intermediates\\assets\\researchDebug\\mergeResearchDebugAssets\\distilbert_fraud.onnx",
+      "app\\src\\research\\assets\\distilbert_fraud.onnx",
+      "deployment_package\\distilbert_fraud.onnx"
+    ],
+    "100-250MB": [],
+    "50-100MB": [
+      "app\\build\\outputs\\apk\\device\\debug\\app-device-debug.apk",
+      "app\\build\\outputs\\apk\\device\\release\\app-device-release.apk",
+      "app\\build\\intermediates\\compressed_assets\\debug\\compressDebugAssets\\out\\assets\\distilbert_fraud_dynamic_int8.onnx.jar",
+      "app\\build\\intermediates\\compressed_assets\\deviceDebug\\compressDeviceDebugAssets\\out\\assets\\distilbert_fraud_dynamic_int8.onnx.jar",
+      "app\\build\\intermediates\\compressed_assets\\deviceRelease\\compressDeviceReleaseAssets\\out\\assets\\distilbert_fraud_dynamic_int8.onnx.jar",
+      "app\\build\\intermediates\\compressed_assets\\release\\compressReleaseAssets\\out\\assets\\distilbert_fraud_dynamic_int8.onnx.jar",
+      "app\\build\\intermediates\\compressed_assets\\researchDebug\\compressResearchDebugAssets\\out\\assets\\distilbert_fraud_dynamic_int8.onnx.jar",
+      "app\\build\\intermediates\\assets\\debug\\mergeDebugAssets\\distilbert_fraud_dynamic_int8.onnx",
+      "app\\build\\intermediates\\assets\\deviceDebug\\mergeDeviceDebugAssets\\distilbert_fraud_dynamic_int8.onnx",
+      "app\\build\\intermediates\\assets\\deviceRelease\\mergeDeviceReleaseAssets\\distilbert_fraud_dynamic_int8.onnx",
+      "app\\build\\intermediates\\assets\\release\\mergeReleaseAssets\\distilbert_fraud_dynamic_int8.onnx",
+      "app\\build\\intermediates\\assets\\researchDebug\\mergeResearchDebugAssets\\distilbert_fraud_dynamic_int8.onnx",
+      "app\\src\\main\\assets\\distilbert_fraud_dynamic_int8.onnx",
+      "deployment_package\\distilbert_fraud_dynamic_int8.onnx"
+    ],
+    "10-50MB": [
+      "app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex",
+      "app\\build\\intermediates\\dex\\deviceDebug\\mergeExtDexDeviceDebug\\classes.dex",
+      "app\\build\\intermediates\\dex\\researchDebug\\mergeExtDexResearchDebug\\classes.dex",
+      "app\\build\\intermediates\\incremental\\debug-mergeJavaRes\\zip-cache\\qPDTnpamcrQ+MkoS5D5K91IjfRs=",
+      "app\\build\\intermediates\\incremental\\deviceDebug-mergeJavaRes\\zip-cache\\qPDTnpamcrQ+MkoS5D5K91IjfRs=",
+      "app\\build\\intermediates\\incremental\\deviceRelease-mergeJavaRes\\zip-cache\\qPDTnpamcrQ+MkoS5D5K91IjfRs=",
+      "app\\build\\intermediates\\incremental\\release-mergeJavaRes\\zip-cache\\qPDTnpamcrQ+MkoS5D5K91IjfRs=",
+      "app\\build\\intermediates\\incremental\\researchDebug-mergeJavaRes\\zip-cache\\qPDTnpamcrQ+MkoS5D5K91IjfRs=",
+      "app\\build\\outputs\\mapping\\release\\mapping.txt",
+      "app\\build\\outputs\\mapping\\deviceRelease\\mapping.txt",
+      "app\\build\\intermediates\\merged_native_libs\\debug\\mergeDebugNativeLibs\\out\\lib\\x86\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\deviceDebug\\mergeDeviceDebugNativeLibs\\out\\lib\\x86\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\deviceRelease\\mergeDeviceReleaseNativeLibs\\out\\lib\\x86\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\release\\mergeReleaseNativeLibs\\out\\lib\\x86\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\researchDebug\\mergeResearchDebugNativeLibs\\out\\lib\\x86\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\x86\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\deviceDebug\\stripDeviceDebugDebugSymbols\\out\\lib\\x86\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\deviceRelease\\stripDeviceReleaseDebugSymbols\\out\\lib\\x86\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\release\\stripReleaseDebugSymbols\\out\\lib\\x86\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\researchDebug\\stripResearchDebugDebugSymbols\\out\\lib\\x86\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\debug\\mergeDebugNativeLibs\\out\\lib\\x86_64\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\deviceDebug\\mergeDeviceDebugNativeLibs\\out\\lib\\x86_64\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\deviceRelease\\mergeDeviceReleaseNativeLibs\\out\\lib\\x86_64\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\release\\mergeReleaseNativeLibs\\out\\lib\\x86_64\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\researchDebug\\mergeResearchDebugNativeLibs\\out\\lib\\x86_64\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\x86_64\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\deviceDebug\\stripDeviceDebugDebugSymbols\\out\\lib\\x86_64\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\deviceRelease\\stripDeviceReleaseDebugSymbols\\out\\lib\\x86_64\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\release\\stripReleaseDebugSymbols\\out\\lib\\x86_64\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\researchDebug\\stripResearchDebugDebugSymbols\\out\\lib\\x86_64\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\debug\\mergeDebugNativeLibs\\out\\lib\\arm64-v8a\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\deviceDebug\\mergeDeviceDebugNativeLibs\\out\\lib\\arm64-v8a\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\deviceRelease\\mergeDeviceReleaseNativeLibs\\out\\lib\\arm64-v8a\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\release\\mergeReleaseNativeLibs\\out\\lib\\arm64-v8a\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\researchDebug\\mergeResearchDebugNativeLibs\\out\\lib\\arm64-v8a\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\arm64-v8a\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\deviceDebug\\stripDeviceDebugDebugSymbols\\out\\lib\\arm64-v8a\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\deviceRelease\\stripDeviceReleaseDebugSymbols\\out\\lib\\arm64-v8a\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\release\\stripReleaseDebugSymbols\\out\\lib\\arm64-v8a\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\researchDebug\\stripResearchDebugDebugSymbols\\out\\lib\\arm64-v8a\\libonnxruntime.so",
+      ".gradle\\8.7\\executionHistory\\executionHistory.bin",
+      "app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex",
+      "app\\build\\intermediates\\dex\\deviceDebug\\mergeExtDexDeviceDebug\\classes2.dex",
+      "app\\build\\intermediates\\dex\\researchDebug\\mergeExtDexResearchDebug\\classes2.dex",
+      "app\\build\\intermediates\\merged_native_libs\\debug\\mergeDebugNativeLibs\\out\\lib\\armeabi-v7a\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\deviceDebug\\mergeDeviceDebugNativeLibs\\out\\lib\\armeabi-v7a\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\deviceRelease\\mergeDeviceReleaseNativeLibs\\out\\lib\\armeabi-v7a\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\release\\mergeReleaseNativeLibs\\out\\lib\\armeabi-v7a\\libonnxruntime.so",
+      "app\\build\\intermediates\\merged_native_libs\\researchDebug\\mergeResearchDebugNativeLibs\\out\\lib\\armeabi-v7a\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\armeabi-v7a\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\deviceDebug\\stripDeviceDebugDebugSymbols\\out\\lib\\armeabi-v7a\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\deviceRelease\\stripDeviceReleaseDebugSymbols\\out\\lib\\armeabi-v7a\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\release\\stripReleaseDebugSymbols\\out\\lib\\armeabi-v7a\\libonnxruntime.so",
+      "app\\build\\intermediates\\stripped_native_libs\\researchDebug\\stripResearchDebugDebugSymbols\\out\\lib\\armeabi-v7a\\libonnxruntime.so"
+    ]
+  },
+  "app_build_size": 5052160211,
+  "app_build_size_str": "4.71 GB",
+  "dot_gradle_size": 16623525,
+  "dot_gradle_size_str": "15.85 MB",
+  "app_src_size": 336640019,
+  "app_src_size_str": "321.04 MB",
+  "git_exists": false,
+  "git_size": 0,
+  "git_size_str": "0 B"
+}
